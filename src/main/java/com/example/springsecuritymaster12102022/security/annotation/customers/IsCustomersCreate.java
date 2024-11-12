@@ -7,10 +7,12 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import static com.example.springsecuritymaster12102022.security.SecurityRole.*;
+import static com.example.springsecuritymaster12102022.security.SecurityRoles.CUSTOMERS_CREATE;
+import static com.example.springsecuritymaster12102022.security.SecurityRoles.ROLES_PREFIX;
+
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.METHOD, ElementType.TYPE})
-@Secured(ROLE_PREFIX + CUSTOMERS_CREATE)
-public @interface IsCustomerCreate {
+@Secured(ROLES_PREFIX + CUSTOMERS_CREATE)
+public @interface IsCustomersCreate {
 }

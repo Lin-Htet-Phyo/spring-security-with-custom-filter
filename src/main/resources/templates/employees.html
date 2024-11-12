@@ -3,16 +3,18 @@
 
 <body>
 <main role="main">
-  <div class="container">
+  <div class="container mt-5">
     <div class="row">
       <div class="col">
         <div class="card">
           <div class="card-header">
-            <h3>Customers Form</h3>
+            <h4>Employees</h4>
           </div>
           <div class="card-body">
-            <div th:replace="~{fragments/customer-form.html :: customerForm}"></div>
+            <div th:replace="~{fragments/employee-table.html :: empTable}"></div>
           </div>
+          <a href="#" class="btn btn-primary"
+             th:href="@{/create-employee}">Create Employee</a>
         </div>
       </div>
     </div>

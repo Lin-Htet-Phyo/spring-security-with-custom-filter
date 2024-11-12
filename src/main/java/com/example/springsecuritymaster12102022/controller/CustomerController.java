@@ -1,11 +1,10 @@
 package com.example.springsecuritymaster12102022.controller;
 
 
+
 import com.example.springsecuritymaster12102022.dao.CustomerDao;
 import com.example.springsecuritymaster12102022.ds.Customer;
-import com.example.springsecuritymaster12102022.security.annotation.customers.IsCustomerCreate;
-import com.example.springsecuritymaster12102022.security.annotation.customers.IsCustomerDelete;
-import com.example.springsecuritymaster12102022.security.annotation.customers.IsCustomerRead;
+import com.example.springsecuritymaster12102022.security.annotation.customers.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +22,7 @@ public class CustomerController {
     @Autowired
     private CustomerDao customerDao;
 
-    @IsCustomerRead
+    @IsCustomersRead
     @GetMapping("/customers")
     public ModelAndView findAllCustomer(){
         return new ModelAndView(
@@ -32,13 +31,13 @@ public class CustomerController {
                 customerDao.findAll()
         );
     }
-    @IsCustomerCreate
+    @IsCustomersCreate
     @GetMapping("/create-customer")
     public String createCustomer(Model model){
         model.addAttribute("customer",new Customer());
         return "customer-form";
     }
-    @IsCustomerCreate
+    @IsCustomersCreate
     @PostMapping("/create-customer")
     public String processCustomer(@Valid Customer customer, BindingResult result){
         if(result.hasErrors()){
@@ -47,7 +46,7 @@ public class CustomerController {
         customerDao.save(customer);
         return "redirect:/customers";
     }
-    @IsCustomerDelete
+    @IsCustomersDelete
     @GetMapping("/customers/delete")
     public String deleteCustomer(@RequestParam("id")int id){
         customerDao.deleteById(id);

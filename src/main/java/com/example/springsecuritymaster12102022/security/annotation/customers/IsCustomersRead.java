@@ -1,4 +1,4 @@
-package com.example.springsecuritymaster12102022.security.annotation.departments;
+package com.example.springsecuritymaster12102022.security.annotation.customers;
 
 import org.springframework.security.access.annotation.Secured;
 
@@ -10,8 +10,8 @@ import java.lang.annotation.Target;
 import static com.example.springsecuritymaster12102022.security.SecurityRoles.*;
 
 
-@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-@Secured(ROLES_PREFIX + DEPARTMENTS_ADMIN)
-public @interface IsDepartmentsAdmin {
+@Target({ElementType.METHOD, ElementType.TYPE})
+@Secured(ROLES_PREFIX + CUSTOMERS_READ)
+public @interface IsCustomersRead {
 }

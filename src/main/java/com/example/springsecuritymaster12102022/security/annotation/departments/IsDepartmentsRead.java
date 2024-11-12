@@ -9,9 +9,8 @@ import java.lang.annotation.Target;
 
 import static com.example.springsecuritymaster12102022.security.SecurityRoles.*;
 
-
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-@Secured(ROLES_PREFIX + DEPARTMENTS_ADMIN)
-public @interface IsDepartmentsAdmin {
+@Secured(ROLES_PREFIX + DEPARTMENTS_READ)
+public @interface IsDepartmentsRead {
 }

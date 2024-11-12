@@ -14,7 +14,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler;
 
-import static com.example.springsecuritymaster12102022.security.SecurityRole.*;
+import static com.example.springsecuritymaster12102022.security.SecurityRoles.*;
 
 
 @Configuration
@@ -41,7 +41,7 @@ public class WebSecurityConfig {
 
         var william = User.withUsername("william")
                 .password("william")
-                .roles(DEPARTMENT_CREATE,DEPARTMENT_READ,DEPARTMENT_PAGE_VIEW)
+                .roles(DEPARTMENTS_CREATE,DEPARTMENTS_READ,DEPARTMENTS_PAGE_VIEW)
                 .build();
 
         var lucas = User.withUsername("lucas")
@@ -77,7 +77,7 @@ public class WebSecurityConfig {
                 .requestMatchers("/bootstrap/**").permitAll()
                 .requestMatchers("/customers").hasRole(CUSTOMERS_PAGE_VIEW)
                 .requestMatchers("/employees").hasRole(EMPLOYEES_PAGE_VIEW)
-                .requestMatchers("/departments").hasRole(DEPARTMENT_PAGE_VIEW)
+                .requestMatchers("/departments").hasRole(DEPARTMENTS_PAGE_VIEW)
                 .anyRequest()
                 .authenticated()
                 .and()
